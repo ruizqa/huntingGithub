@@ -9,10 +9,16 @@
 </head>
 <body>
     <div class="container section">
-        <div class="col s12">
+        <div class="row">
             <h1></h1>
-            <button class="btn" id="query">Query Github (Regular solution)</button>
-            <button class="btn" id="query-b">Query Github (Promise solution)</button>
+            <div class="col m6 offset-m3">
+                <input type="text" id="username" >
+            </div>
+            <div class="col m6 offset-m3" style="height:20px"></div>
+            <div class="col m6 offset-m3">
+                <button class="btn" id="query">Query Github (Regular solution)</button>
+                <button class="btn" id="query-b">Query Github (Promise solution)</button>
+            </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 

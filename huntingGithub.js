@@ -1,14 +1,30 @@
+let url ={
+    address:`https://api.github.com/users/`
+} 
+
+$('#username').on('change',function(){
+    url.address = `https://api.github.com/users/` + $(this).val()
+}
+)
+
+
 $('#query').on('click', function(){
-    $.get("https://api.github.com/users/ruizqa", function(data){
+    $.get(url.address, function(data){
         $('h1').text(data.name);
-    })});
+    }).fail(function(e){$('h1').text('Error: Type a valid username')})
+})
     
 
 function queryGithub(resolve,reject){
 
-    let data = fetch('https://api.github.com/users/ruizqa')
+    let data = fetch(url.address)
     .then(response => response.json())
-    resolve(data);
+    
+
+    resolve(data)
+ 
+
+    
 
 }
 
@@ -20,11 +36,13 @@ let data = new Promise(function(resolve,reject){
 });
 
 data.then(function(data){
-    h1.innerText = data.name;
-})
-
-data.catch(function(){
-    console.log('Error!');
+    
+    if(data.message=='Not Found'){
+        $('h1').text('Error: Type a valid username')
+    }
+    else{
+        $('h1').text(data.name);
+    }
 })
 
 
